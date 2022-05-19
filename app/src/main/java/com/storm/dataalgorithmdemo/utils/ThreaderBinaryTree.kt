@@ -1,12 +1,41 @@
 package com.storm.stormtestdemo.utils
 
+import androidx.constraintlayout.solver.state.HelperReference
+
 /**
- *  二叉树前遍历 中序遍历 后序遍历
+ *  线索化 二叉树前遍历 中序遍历 后序遍历
  */
-class PreTraversal(root: HeroNode) {
+class ThreaderBinaryTree(root: HeroNode) {
 
 
     var rootNode: HeroNode? = root
+
+
+    private var  preNode : HeroNode? = null;
+    /**
+     * 线索化 二叉树
+     */
+    fun threaderNodes(node: HeroNode?) {
+        node?.let {
+            threaderNodes(it.left)
+
+            // 处理前节点
+            if (it.left == null) {
+                it.left = preNode
+                it.leftType = 1
+            }
+            // 处理后继节点
+            if (null != preNode &&  preNode!!.right == null) {
+                preNode!!.right= it
+                preNode!!.rightType = 1
+            }
+            preNode  = it
+
+            threaderNodes(it.right)
+
+
+        }
+    }
 
     fun preOrder() {
         if (null == rootNode) {

@@ -9,6 +9,10 @@ class HeroNode {
 
     var left: HeroNode? = null
     var right: HeroNode? = null
+    var leftType : Int = 0
+    var rightType : Int = 0
+    // 0 代表当前的节点的左右节点是节点指向的左子树
+    // 1 代表当前节点 left 前驱节点 后驱节点 .
 
     constructor()
     constructor(no: Int, name: String) {
