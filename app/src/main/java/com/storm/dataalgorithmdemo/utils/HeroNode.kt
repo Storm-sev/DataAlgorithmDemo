@@ -9,8 +9,8 @@ class HeroNode {
 
     var left: HeroNode? = null
     var right: HeroNode? = null
-    var leftType : Int = 0
-    var rightType : Int = 0
+    var leftType: Int = 0
+    var rightType: Int = 0
     // 0 代表当前的节点的左右节点是节点指向的左子树
     // 1 代表当前节点 left 前驱节点 后驱节点 .
 
@@ -41,6 +41,23 @@ class HeroNode {
         this.left?.inOrder()
         System.out.println(this)
         this.right?.inOrder()
+    }
+
+
+    /**
+     * 线索化二叉树的遍历
+      */
+    fun threaderInOrder(){
+         if (this.leftType == 0){
+             this.left?.threaderInOrder()
+         }
+//        if (this.left?.leftType == 0) {
+//            this.left?.threaderInOrder()
+//        }
+        System.out.println(this)
+        if (this.rightType == 0) {
+            this.right?.threaderInOrder()
+        }
     }
 
     /**
@@ -95,16 +112,16 @@ class HeroNode {
         return node
     }
 
-    fun queryPosOrder(no: Int) : HeroNode?{
+    fun queryPosOrder(no: Int): HeroNode? {
         var node: HeroNode? = null
-        if (null != this.left){
+        if (null != this.left) {
             node = this.left!!.queryPosOrder(no)
 
         }
 
         if (null != node) return node
 
-        if (null != this.right){
+        if (null != this.right) {
             node = this.right!!.queryPosOrder(no)
 
         }
@@ -117,12 +134,12 @@ class HeroNode {
     }
 
     // 删除节点
-    fun delPreOrder(no:Int){
+    fun delPreOrder(no: Int) {
         if (null != this.left) {
             if (this.left!!.no == no) {
                 this.left = null
                 return
-            }else{
+            } else {
                 this.left!!.delPreOrder(no)
             }
         }

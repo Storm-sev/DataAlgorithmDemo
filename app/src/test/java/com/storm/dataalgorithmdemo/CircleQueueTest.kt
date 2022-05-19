@@ -94,11 +94,8 @@ class CircleQueueTest {
         node3.left = node6
 
         var threaderNods = ThreaderBinaryTree(node1)
-        threaderNods.threaderNodes(node1)
-        var left = node5.left
-        System.out.println("线索化的 状态 left ${left.toString()} + 后驱节点 --> ${node5!!.right.toString()}")
-
-
+        threaderNods.threaderNodes()
+        threaderNods.threadInOrder()
     }
 
 }

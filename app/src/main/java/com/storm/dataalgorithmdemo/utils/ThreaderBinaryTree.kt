@@ -12,13 +12,18 @@ class ThreaderBinaryTree(root: HeroNode) {
 
 
     private var  preNode : HeroNode? = null;
+
+
+    public  fun threaderNodes(){
+        threaderNodes(rootNode)
+
+    }
     /**
      * 线索化 二叉树
      */
     fun threaderNodes(node: HeroNode?) {
         node?.let {
             threaderNodes(it.left)
-
             // 处理前节点
             if (it.left == null) {
                 it.left = preNode
@@ -30,10 +35,7 @@ class ThreaderBinaryTree(root: HeroNode) {
                 preNode!!.rightType = 1
             }
             preNode  = it
-
             threaderNodes(it.right)
-
-
         }
     }
 
@@ -46,6 +48,14 @@ class ThreaderBinaryTree(root: HeroNode) {
         }
     }
 
+    fun threadInOrder(){
+        if (null == rootNode) {
+            System.out.println("二叉树为空, 无法遍历")
+        }else{
+            rootNode!!.threaderInOrder()
+        }
+
+    }
     fun inOrder() {
         if (null == rootNode) {
             System.out.println("二叉树为空, 无法遍历")
