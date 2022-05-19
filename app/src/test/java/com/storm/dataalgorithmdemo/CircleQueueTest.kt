@@ -62,10 +62,10 @@ class CircleQueueTest {
         var preTraversal = PreTraversal(node1)
         preTraversal.posOrder();
 
-        val queryNode = preTraversal.queryOrderSearch(6)
-        System.out.println("查找到的node --> ${queryNode.toString()}")
-        preTraversal.delNode(3)
-        preTraversal.preOrder()
+//        val queryNode = preTraversal.queryOrderSearch(6)
+//        System.out.println("查找到的node --> ${queryNode.toString()}")
+//        preTraversal.delNode(3)
+//        preTraversal.preOrder()
     }
 
     @Test
@@ -94,8 +94,17 @@ class CircleQueueTest {
         node3.left = node6
 
         var threaderNods = ThreaderBinaryTree(node1)
-        threaderNods.threaderNodes()
-        threaderNods.threadInOrder()
+//        threaderNods.posOrder()
+
+        threaderNods.threaderNodePos()
+
+        System.out.println("node4 left - ${node4.left} + right - ${node6.left}")
+        threaderNods.threaderListNodePos()
+    //        threaderNods.threaderListNodePre()
+//        threaderNods.threaderNodes()
+//        threaderNods.threaderListNodes()
+//        System.out.println("自己写的遍历")
+//        threaderNods.threadInOrder()
     }
 
 }

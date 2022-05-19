@@ -51,14 +51,13 @@ class HeroNode {
          if (this.leftType == 0){
              this.left?.threaderInOrder()
          }
-//        if (this.left?.leftType == 0) {
-//            this.left?.threaderInOrder()
-//        }
+
         System.out.println(this)
         if (this.rightType == 0) {
             this.right?.threaderInOrder()
         }
     }
+
 
     /**
      * 后序遍历
