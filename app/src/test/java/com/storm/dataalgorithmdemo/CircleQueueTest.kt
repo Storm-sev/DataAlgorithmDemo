@@ -1,8 +1,7 @@
 package com.storm.dataalgorithmdemo
 
-import com.storm.dataalgorithmdemo.utils.ArrBinaryThree
-import com.storm.dataalgorithmdemo.utils.CircleArrayQueue
-import com.storm.dataalgorithmdemo.utils.Stack
+import android.widget.HeaderViewListAdapter
+import com.storm.dataalgorithmdemo.utils.*
 import com.storm.stormtestdemo.utils.HeroNode
 import com.storm.stormtestdemo.utils.PreTraversal
 import com.storm.stormtestdemo.utils.ThreaderBinaryTree
@@ -107,4 +106,29 @@ class CircleQueueTest {
 //        threaderNods.threadInOrder()
     }
 
+
+    /**
+     * 堆排序测试
+     */
+    @Test
+    public fun heapSortTest(){
+        // 创建数组
+        var arr = arrayOf(4, 6, 8, 5, 9)
+        var heapSort = HeapSort(arr)
+        heapSort.heapSort()
+        heapSort.arrToString()
+
+    }
+
+    @Test
+    public fun huffmanTreeTest(){
+        var arr = arrayOf(13,7,8,3,29,6,1)
+        var huffmanTree = HuffmanTree(arr)
+        huffmanTree.createHuffManTree()
+        val nodes = huffmanTree.getNodes()
+        if (nodes.size == 1) {
+            nodes[0].preOrder()
+        }
+
+    }
 }
