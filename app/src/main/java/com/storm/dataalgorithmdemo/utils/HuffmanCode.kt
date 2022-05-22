@@ -1,16 +1,9 @@
 package com.storm.dataalgorithmdemo.utils
 
-import android.animation.TypeEvaluator
-import android.content.ContentUris
-import android.content.Context
-import android.nfc.Tag
-import androidx.annotation.IntegerRes
 import com.blankj.utilcode.util.LogUtils
-import com.storm.dataalgorithmdemo.app.MApplication
-import io.reactivex.rxjava3.core.Maybe
+
 import java.io.*
 import java.lang.Exception
-import kotlin.math.log
 
 
 /**
