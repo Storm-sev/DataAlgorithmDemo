@@ -35,20 +35,23 @@ class HuffmanTree {
         return nodes
     }
 
-    fun createHuffManTree() {
+   public fun createHuffManTree() {
 
-        nodes.sort()
 
         while (nodes.size > 1) {
+            nodes.sort()
             // 最后集合中就只有一个
             // 取出 左右节点
             var left = nodes[0]
             var right = nodes[1]
 
             // 创建 huffman 节点
+            // 创建权重结点
             var parent = Node(left.value + right.value)
+            // 设置权重结点的两个结点
             parent.left = left
             parent.right = right
+
 
             nodes.remove(left)
             nodes.remove(right)

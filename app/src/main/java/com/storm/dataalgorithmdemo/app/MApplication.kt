@@ -3,6 +3,7 @@ package com.storm.dataalgorithmdemo.app
 import android.app.Application
 import com.blankj.utilcode.BuildConfig
 import com.blankj.utilcode.util.LogUtils
+import java.io.InputStream
 
 class MApplication : Application() {
     companion object {
@@ -30,5 +31,10 @@ class MApplication : Application() {
             .setFileFilter(LogUtils.V)
     }
 
+
+   public fun getAssert(): InputStream {
+
+        return assets.open("yao.jpg")
+    }
 
 }

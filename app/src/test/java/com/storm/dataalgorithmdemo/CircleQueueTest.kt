@@ -6,9 +6,60 @@ import com.storm.stormtestdemo.utils.HeroNode
 import com.storm.stormtestdemo.utils.PreTraversal
 import com.storm.stormtestdemo.utils.ThreaderBinaryTree
 import org.junit.Test
+import org.junit.runners.model.TestClass
+import java.io.File
 import kotlin.concurrent.thread
 
 class CircleQueueTest {
+
+    @Test
+    fun huffmanFileZip() {
+        //测试文件写入
+        var fileurl = ClassLoader.getSystemResource("yao.jpg")
+        var file = File(fileurl.path)
+        val exists = file.exists()
+        var zipUrl = ClassLoader.getSystemResource("yao.zip")
+
+        
+        var yaozip = File(zipUrl.path)
+
+        HuffmanCode.zipFile(file, yaozip)
+
+        var outpath = ClassLoader.getSystemResource("storm").path
+        var outFile = File(outpath)
+
+        HuffmanCode.unzipFile(yaozip, outFile)
+
+
+//        HuffmanCode.unzipFile(file,)
+
+
+    }
+
+    @Test
+    fun huffManCode() {
+        var str = "haha i like love like java do you like a java"
+
+        var byteArray = HuffmanCode.huffmanZip(str.toByteArray())
+
+        println(byteArray.toList())
+
+        HuffmanCode.huffmanUnzip(byteArray,HuffmanCode.huffmanCode)
+
+
+//        var huffmanCode = HuffmanCode(str.toByteArray())
+
+//        System.out.println("---> ${huffmanCode.nodes}")
+//        val root = huffmanCode.huffManCodeTree()
+//        huffmanCode.preOrder(root)
+//
+//        val map = HuffmanCode.createHuffmanCode(root)
+//
+//        println(map)
+//        HuffmanCode.zip(str.toByteArray(), map)
+
+
+    }
 
     @Test
     fun circleTest() {
@@ -99,7 +150,7 @@ class CircleQueueTest {
 
         System.out.println("node4 left - ${node4.left} + right - ${node6.left}")
         threaderNods.threaderListNodePos()
-    //        threaderNods.threaderListNodePre()
+        //        threaderNods.threaderListNodePre()
 //        threaderNods.threaderNodes()
 //        threaderNods.threaderListNodes()
 //        System.out.println("自己写的遍历")
@@ -111,7 +162,7 @@ class CircleQueueTest {
      * 堆排序测试
      */
     @Test
-    public fun heapSortTest(){
+    public fun heapSortTest() {
         // 创建数组
         var arr = arrayOf(4, 6, 8, 5, 9)
         var heapSort = HeapSort(arr)
@@ -121,8 +172,8 @@ class CircleQueueTest {
     }
 
     @Test
-    public fun huffmanTreeTest(){
-        var arr = arrayOf(13,7,8,3,29,6,1)
+    public fun huffmanTreeTest() {
+        var arr = arrayOf(13, 7, 8, 3, 29, 6, 1)
         var huffmanTree = HuffmanTree(arr)
         huffmanTree.createHuffManTree()
         val nodes = huffmanTree.getNodes()
