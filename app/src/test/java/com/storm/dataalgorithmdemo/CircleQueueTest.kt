@@ -13,6 +13,25 @@ import kotlin.concurrent.thread
 class CircleQueueTest {
 
     @Test
+    fun binarySortTree() {
+        var array = arrayOf(7, 3, 10, 12, 5, 1, 9, 0)
+        var sort = BinarySortTree()
+        for (i in array) {
+            sort.addNode(BinarySortTree.Node(i))
+
+        }
+
+//        sort.inOrder()
+//        val search = sort.root?.search(2)
+//        println(search.toString())
+        sort.inOrder()
+        sort.delNode(10)
+        println("-----------------")
+        sort.inOrder()
+
+    }
+
+    @Test
     fun huffmanFileZip() {
         //测试文件写入
         var fileurl = ClassLoader.getSystemResource("yao.jpg")
@@ -20,7 +39,7 @@ class CircleQueueTest {
         val exists = file.exists()
         var zipUrl = ClassLoader.getSystemResource("yao.zip")
 
-        
+
         var yaozip = File(zipUrl.path)
 
         HuffmanCode.zipFile(file, yaozip)
@@ -44,7 +63,7 @@ class CircleQueueTest {
 
         println(byteArray.toList())
 
-        HuffmanCode.huffmanUnzip(byteArray,HuffmanCode.huffmanCode)
+        HuffmanCode.huffmanUnzip(byteArray, HuffmanCode.huffmanCode)
 
 
 //        var huffmanCode = HuffmanCode(str.toByteArray())
