@@ -1,6 +1,7 @@
 package com.storm.dataalgorithmdemo.utils;
 
 
+import android.util.JsonReader;
 import android.util.Log;
 
 import com.blankj.utilcode.util.LogUtils;
@@ -12,7 +13,14 @@ import java.util.Map;
 public class Custom {
 
     public static final String TAG = "Custom";
+
+
+
     public static byte[] huffmanUnzip(byte[] bytes, HashMap<Byte, String> huffmanMap) {
+
+        int n = 10;
+        int eadge[][] = new int[n][n];
+
 
         StringBuilder str = new StringBuilder();
 
@@ -40,7 +48,7 @@ public class Custom {
             Byte b = null;
             while (flag) {
                 if (i + count >= str.length()) {
-                    LogUtils.d(TAG,"超出界限");
+                    LogUtils.d(TAG, "超出界限");
                 }
                 String key = str.substring(i, i + count);
                 b = map.get(key);

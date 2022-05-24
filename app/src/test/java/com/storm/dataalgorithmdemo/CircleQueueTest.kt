@@ -12,6 +12,75 @@ import kotlin.concurrent.thread
 
 class CircleQueueTest {
 
+    /**
+     * 图的邻接矩阵
+     */
+    @Test
+    public fun edgesTest() {
+        var array = arrayOf("A", "B", "C", "D", "E")
+
+        var graph = Graph(5)
+
+        for (s in array) {
+            graph.insertVertex(s)
+        }
+        graph.showEdge()
+        // 设置 边
+        // a->b  a-c
+        graph.insetEdges(0, 1, 1)
+        graph.insetEdges(0, 2, 1)
+        // b-c  b-d  b-e
+        graph.insetEdges(1, 2, 1)
+        graph.insetEdges(1, 3, 1)
+        graph.insetEdges(1, 4, 1)
+
+
+        println("----添加边之后---- ")
+        graph.showEdge()
+        println("深度遍历")
+//        graph.dfs()
+        println("广度遍历")
+        graph.bfs()
+
+
+    }
+
+    @Test
+    public fun avlTreeTest() {
+
+        var array = arrayOf(10, 11, 7, 6, 8, 9)
+        var tree = AVLTree()
+        for (i in array) {
+            tree.addNode(AVLTree.Node(i))
+
+        }
+
+        println(
+            "heftHeight -> ${tree.root?.leftHeight()} " +
+                    "rightHeight --> ${tree.root?.rightHeight()}  " +
+                    "  height${tree.root?.height()}"
+        )
+
+
+        tree.root?.right
+
+
+        // 添加一个树进行左旋转
+//        tree.addNode(AVLTree.Node(10))
+//        leftHeight = tree.root?.leftHeight();
+//        rightHeight = tree.root?.rightHeight()
+//        height = tree.root!!.height()
+//
+//
+//        println(
+//            "heftHeight -> $leftHeight " +
+//                    "rightHeight --> $rightHeight" +
+//                    "height$height"
+//        )
+
+
+    }
+
     @Test
     fun binarySortTree() {
         var array = arrayOf(7, 3, 10, 12, 5, 1, 9, 0)
