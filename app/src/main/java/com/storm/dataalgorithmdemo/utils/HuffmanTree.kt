@@ -1,6 +1,6 @@
 package com.storm.dataalgorithmdemo.utils
 
-import java.util.*
+
 import kotlin.collections.ArrayList
 
 // 赫夫曼数

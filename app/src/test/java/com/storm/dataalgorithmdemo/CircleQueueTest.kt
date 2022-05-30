@@ -1,16 +1,171 @@
 package com.storm.dataalgorithmdemo
 
-import android.widget.HeaderViewListAdapter
 import com.storm.dataalgorithmdemo.utils.*
+import com.storm.dataalgorithmdemo.utils.DijkstraAlgorithm.Companion.N
+import com.storm.dataalgorithmdemo.utils.HorseChessBoard.Companion.X
+import com.storm.dataalgorithmdemo.utils.HorseChessBoard.Companion.Y
+import com.storm.dataalgorithmdemo.utils.KruskalCase.Companion.INF
 import com.storm.stormtestdemo.utils.HeroNode
 import com.storm.stormtestdemo.utils.PreTraversal
 import com.storm.stormtestdemo.utils.ThreaderBinaryTree
 import org.junit.Test
-import org.junit.runners.model.TestClass
 import java.io.File
-import kotlin.concurrent.thread
 
 class CircleQueueTest {
+
+    @Test
+    public fun horse() {
+
+        println("算法开始")
+
+        HorseChessBoard.X = 8
+        HorseChessBoard.Y = 8
+
+        var row = 1
+        var colum = 1
+
+        var chessBoard : Array<IntArray> = Array(X){ IntArray(Y) }
+
+        for (i in chessBoard.indices) {
+            println(chessBoard[i].toList())
+        }
+
+        var visited: BooleanArray = BooleanArray(X * Y)
+
+        var horse = HorseChessBoard(visited);
+
+
+        horse.traversalChessBoarder(chessBoard, row - 1, colum - 1, 1)
+
+        println("算法结束 ")
+        for (i in chessBoard.indices) {
+            println(chessBoard[i].toList())
+        }
+
+
+    }
+
+    @Test
+    public fun floyd() {
+        var floyd = FloydAlgorithm()
+        floyd.floyd()
+
+    }
+
+    @Test
+    public fun dijkstraTest() {
+
+        /**
+         * dijkstra 获取最短路径
+         */
+        var vertex: CharArray = charArrayOf('A', 'B', 'C', 'D', 'E', 'F', 'G')
+        // 邻接矩阵
+        var matrix: Array<IntArray> = arrayOf(
+            intArrayOf(0, 5, 7, N, N, N, 2),
+            intArrayOf(5, 0, N, 9, N, N, 3),
+            intArrayOf(7, N, 0, N, 8, N, N),
+            intArrayOf(N, 9, N, 0, N, 4, N),
+            intArrayOf(N, N, 8, N, 0, 5, 4),
+            intArrayOf(N, N, N, 4, 5, 0, 6),
+            intArrayOf(2, 3, N, N, 4, 6, 0)
+        )
+
+
+        var graph = DijkstraAlgorithm.Graph(vertex, matrix)
+//
+        var dik = DijkstraAlgorithm(graph.vertex, graph.matrix)
+
+
+        dik.dijkstra(6)
+        dik.show()
+
+
+    }
+
+
+    @Test
+    public fun kruskalCaseTest() {
+        var vertexs: CharArray = charArrayOf('A', 'B', 'C', 'D', 'E', 'F', 'G')
+        var matrix: Array<IntArray> = arrayOf(
+            intArrayOf(0, 12, INF, INF, INF, 16, 14),
+            intArrayOf(12, 0, 10, INF, INF, 7, INF),
+            intArrayOf(INF, INF, 0, 3, 5, 6, INF),
+            intArrayOf(INF, INF, 3, 0, 4, INF, INF),
+            intArrayOf(INF, INF, 5, 4, 0, 2, 8),
+            intArrayOf(16, 7, 6, INF, 2, 0, 9),
+            intArrayOf(14, INF, INF, INF, 8, 9, 0)
+        )
+
+
+        var kruskal = KruskalCase(vertexs, matrix)
+//        kruskal.showMatrix()
+
+        println()
+
+//        val edges = kruskal.getEdges()
+//        kruskal.sortEdge(edges)
+//        println(edges.toList())
+        val result = kruskal.kruskal()
+
+        println(result.toList())
+
+
+    }
+
+    @Test
+    public fun binaryTest() {
+//        var array = arrayOf(7, 8, 9, 10, 15, 16)
+//        var result = ClassicalAlgorithm.binarySearch(array, 16)
+//
+//        println("获取查到的下标 -- > $result")
+
+        // 汉诺塔
+//        ClassicalAlgorithm.hanoiTower(5, "A", "B", "C")
+
+        // 背包问题
+//        ClassicalAlgorithm.knapsackProgrem()
+
+        //暴力匹配算法
+
+        // kmp 算法
+//        var src = "BBC ABCDAB ABCDABCDABDE"
+//        var dest = "ABCDABD"
+//        var next = ClassicalAlgorithm.kmpNext(dest)
+//
+//        var index = ClassicalAlgorithm.kmpSearch(src, dest, next)
+//
+//        println("获取的位置  ---> ${index}")
+
+        // 贪婪算法
+//        ClassicalAlgorithm.greedyAlgorithm()
+
+        // 普利姆算法
+        var data = charArrayOf('A', 'B', 'C', 'D', 'E', 'F', 'G')
+        var vertex = data.size
+        var weight: Array<IntArray> = arrayOf(
+            intArrayOf(10000, 5, 7, 10000, 10000, 10000, 2),
+            intArrayOf(5, 10000, 10000, 9, 10000, 10000, 3),
+            intArrayOf(7, 10000, 10000, 10000, 8, 10000, 10000),
+            intArrayOf(10000, 9, 10000, 10000, 10000, 4, 10000),
+            intArrayOf(10000, 10000, 8, 10000, 10000, 5, 4),
+            intArrayOf(10000, 10000, 10000, 4, 5, 10000, 6),
+            intArrayOf(2, 3, 10000, 10000, 4, 6, 10000),
+        )
+
+        var graph = MGraph(vertex)
+
+        var minTree = MinTree()
+        minTree.createGraph(
+            graph,
+            vertex, data, weight
+
+        )
+
+        minTree.primAlgorithm(graph, 0)
+
+
+    }
+
 
     /**
      * 图的邻接矩阵

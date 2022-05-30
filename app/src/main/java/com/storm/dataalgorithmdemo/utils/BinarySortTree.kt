@@ -34,11 +34,11 @@ class BinarySortTree {
                     parent.left = null
                     return
                 }
-                if (parent?.right != null && parent.right!!.value == value) {
+                if (parent.right != null && parent.right!!.value == value) {
 
                     parent.right = null
                 }
-            } else if (null != target!!.left && null != target.right) {
+            } else if (null != target.left && null != target.right) {
                 var minValue = delRightTreeMin(target)
                 target.value = minValue
             } else {

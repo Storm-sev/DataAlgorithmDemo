@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.blankj.utilcode.util.LogUtils;
 
+import java.time.temporal.ValueRange;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,11 +16,19 @@ public class Custom {
     public static final String TAG = "Custom";
 
 
-
+   
+    public static String test(int  index) {
+        String s = String.format("{0:c}",88667.67);
+//        LogUtils.d("storm", s);
+        return s;
+    }
     public static byte[] huffmanUnzip(byte[] bytes, HashMap<Byte, String> huffmanMap) {
+
 
         int n = 10;
         int eadge[][] = new int[n][n];
+
+        EData[] edges = new EData[10];
 
 
         StringBuilder str = new StringBuilder();
