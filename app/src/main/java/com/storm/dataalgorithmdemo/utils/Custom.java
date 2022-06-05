@@ -1,12 +1,8 @@
 package com.storm.dataalgorithmdemo.utils;
 
 
-import android.util.JsonReader;
-import android.util.Log;
-
 import com.blankj.utilcode.util.LogUtils;
 
-import java.time.temporal.ValueRange;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,13 +11,28 @@ public class Custom {
 
     public static final String TAG = "Custom";
 
+    public static void shell(int[] array) {
+        int temp = 0;
+        for (int gap = array.length / 2; gap > 0; gap /= 2) {
+            for (int i = gap; i < array.length - 1; i++) {
+                for (int j = i - gap; j >= 0; j -= gap) {
+                    if (array[j] > array[j + gap]) {
+                        temp = array[j];
 
-   
-    public static String test(int  index) {
-        String s = String.format("{0:c}",88667.67);
+                        array[j] = array[j + gap];
+                        array[j + gap] = temp;
+                    }
+                }
+            }
+        }
+    }
+
+    public static String test(int index) {
+        String s = String.format("{0:c}", 88667.67);
 //        LogUtils.d("storm", s);
         return s;
     }
+
     public static byte[] huffmanUnzip(byte[] bytes, HashMap<Byte, String> huffmanMap) {
 
 

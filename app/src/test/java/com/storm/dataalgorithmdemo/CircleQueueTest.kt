@@ -1,5 +1,6 @@
 package com.storm.dataalgorithmdemo
 
+import android.view.Surface
 import com.storm.dataalgorithmdemo.utils.*
 import com.storm.dataalgorithmdemo.utils.DijkstraAlgorithm.Companion.N
 import com.storm.dataalgorithmdemo.utils.HorseChessBoard.Companion.X
@@ -13,6 +14,26 @@ import java.io.File
 
 class CircleQueueTest {
 
+    /**
+     *  排序算法合集测试
+     */
+    @Test
+    public fun sort() {
+        var arr = intArrayOf(8, 9, 1, 7, 2, 3, 5, 4, 6, 0, 100, 9, 9, 9, 10, 1000)
+//        var arr = intArrayOf(1,2,3,4,5,6,7,8,9,10,11,12)
+        var temp = IntArray(arr.size)
+
+        SortAlgorithm.testSort(arr, 0, arr.size - 1, temp)
+
+
+//        Custom.shell(arr)
+
+
+        println("${arr.toList()}")
+
+
+    }
+
     @Test
     public fun horse() {
 
@@ -24,7 +45,7 @@ class CircleQueueTest {
         var row = 1
         var colum = 1
 
-        var chessBoard : Array<IntArray> = Array(X){ IntArray(Y) }
+        var chessBoard: Array<IntArray> = Array(X) { IntArray(Y) }
 
         for (i in chessBoard.indices) {
             println(chessBoard[i].toList())
