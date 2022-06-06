@@ -14,6 +14,20 @@ import java.io.File
 
 class CircleQueueTest {
 
+    @Test
+    public fun searchSort() {
+//        var arr = intArrayOf(8, 9, 1, 7, 2, 3, 5, 4, 6, 0, 100, 9, 9, 9, 10, 1000)
+        var arr = intArrayOf(1,2,3,4,5,6,7,8,9,10,11,12,13)
+//        var arr = intArrayOf(1,2,3,4)
+        var index = SearchSort.bifSearch(arr, 3)
+
+
+
+        println("$index")
+
+
+    }
+
     /**
      *  排序算法合集测试
      */
@@ -23,8 +37,9 @@ class CircleQueueTest {
 //        var arr = intArrayOf(1,2,3,4,5,6,7,8,9,10,11,12)
         var temp = IntArray(arr.size)
 
-        SortAlgorithm.testSort(arr, 0, arr.size - 1, temp)
+//        SortAlgorithm.testSort(arr, 0, arr.size - 1, temp)
 
+        SortAlgorithm.radixTest(arr)
 
 //        Custom.shell(arr)
 

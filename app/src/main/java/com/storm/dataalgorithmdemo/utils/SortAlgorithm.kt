@@ -1,6 +1,7 @@
 package com.storm.dataalgorithmdemo.utils
 
 import org.w3c.dom.Text
+import kotlin.math.max
 
 /**
  * Author:
@@ -253,12 +254,12 @@ object SortAlgorithm {
 
     }
 
-    public fun testSort(arr: IntArray, left: Int, right: Int,temp: IntArray) {
+    public fun testSort(arr: IntArray, left: Int, right: Int, temp: IntArray) {
         if (left < right) {
             var mid = (left + right) / 2
-            testSort(arr, left, mid,temp)
-            testSort(arr, mid + 1, right,temp)
-            testMerge(arr,left,mid,right, temp )
+            testSort(arr, left, mid, temp)
+            testSort(arr, mid + 1, right, temp)
+            testMerge(arr, left, mid, right, temp)
         }
     }
 
@@ -271,12 +272,12 @@ object SortAlgorithm {
         while (i <= mid && j <= right) {
             if (arr[i] < arr[j]) {
                 temp[t] = arr[i]
-                i+=1
+                i += 1
                 t += 1
 
-            }else{
-                temp[t]= arr[j]
-                j+=1
+            } else {
+                temp[t] = arr[j]
+                j += 1
                 t += 1
 
             }
@@ -284,12 +285,12 @@ object SortAlgorithm {
 
         while (i <= mid) {
             temp[t] = arr[i]
-            i+=1
-            t+=1
+            i += 1
+            t += 1
         }
         while (j <= right) {
             temp[t] = arr[j]
-            j+=1
+            j += 1
             t += 1
 
         }
@@ -298,8 +299,8 @@ object SortAlgorithm {
         var index = left
         while (index <= right) {
             arr[index] = temp[t]
-            t+=1
-            index+=1
+            t += 1
+            index += 1
         }
 
 
@@ -433,6 +434,52 @@ object SortAlgorithm {
             n *= 10
 
 
+        }
+
+    }
+
+
+    /**
+     * 基数排序测试
+     */
+    public fun radixTest(arr: IntArray) {
+        //创建捅
+
+        var bucket = Array(10){ IntArray(arr.size)}
+        var bucketCount = IntArray(10)
+
+
+        var maxLength = arr[0]
+        for (i in arr.indices) {
+            if (maxLength < arr[i]) {
+                maxLength = arr[i]
+            }
+        }
+
+        maxLength = "$maxLength".length
+        var n = 1;
+        for (i in 0 until maxLength) {
+            // 放数据
+            for (j in arr.indices) {
+                var digitlement = (arr[j] / n) % 10
+                bucket[digitlement][bucketCount[digitlement]] = arr[j]
+                bucketCount[digitlement]++
+
+            }
+
+            //取数据
+            var index = 0
+            for (k in bucket.indices) {
+                if (bucketCount[k] != 0) {
+                    for (j in 0 until bucketCount[k]) {
+                        arr[index++] = bucket[k][j]
+
+                    }
+                }
+                bucketCount[k] = 0
+            }
+
+            n *= 10
         }
 
     }
