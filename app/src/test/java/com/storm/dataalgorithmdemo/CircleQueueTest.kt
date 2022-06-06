@@ -17,9 +17,9 @@ class CircleQueueTest {
     @Test
     public fun searchSort() {
 //        var arr = intArrayOf(8, 9, 1, 7, 2, 3, 5, 4, 6, 0, 100, 9, 9, 9, 10, 1000)
-        var arr = intArrayOf(1,2,3,4,5,6,7,8,9,10,11,12,13)
-//        var arr = intArrayOf(1,2,3,4)
-        var index = SearchSort.bifSearch(arr, 3)
+//        var arr = intArrayOf(1,2,3,4,5,6,7,8,9,10,11,12,13,14)
+        var arr = intArrayOf(1,2)
+        var index = SearchSort.bifSearch(arr, 2)
 
 
 

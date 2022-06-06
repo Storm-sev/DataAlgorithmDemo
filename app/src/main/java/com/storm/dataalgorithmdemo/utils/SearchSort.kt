@@ -183,11 +183,27 @@ object SearchSort {
 
     }
 
+    /**
+     *  斐波那契查找, 考虑了size <=2 的特殊情况
+     * @param array IntArray 原始数组
+     * @param key Int 要查找的值
+     * @return Int 返回的下标
+     *
+     */
     public fun bifSearch(array: IntArray, key: Int): Int {
+        // 处理数组长度为 1. 或者 2 的时候的数据
+        if (array.size <= 2) {
+            for (i in array.indices) {
+                if (array[i] == key) {
+                    return i
+                }
+            }
+            return -1
+        }
         var low = 0
         var high = array.size - 1
         //
-        var f = fib(array.size + 1) // 根据数组的大小 创建出同等大小的菲波那切数列 下标的数组
+        var f = fib(array.size+1) // 根据数组的大小 创建出同等大小的菲波那切数列 下标的数组
         var mid = 0 // 中间的值
         var k = 0
         // 找到 表示当前数组的个数的下标
@@ -219,7 +235,12 @@ object SearchSort {
 
 
             } else {
-                return mid
+                if (mid <= high) {
+                    return mid
+                }else{
+                    return high
+                }
+
             }
         }
         return -1
