@@ -5,11 +5,17 @@ import com.blankj.utilcode.util.LogUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Custom {
 
     public static final String TAG = "Custom";
+
+    public static void test() {
+        List<?>[] list1 = new ArrayList<?>[10];
+    }
+
 
     public static void shell(int[] array) {
         int temp = 0;

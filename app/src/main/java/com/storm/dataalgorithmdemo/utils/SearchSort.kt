@@ -203,7 +203,7 @@ object SearchSort {
         var low = 0
         var high = array.size - 1
         //
-        var f = fib(array.size+1) // 根据数组的大小 创建出同等大小的菲波那切数列 下标的数组
+        var f = fib(array.size + 1) // 根据数组的大小 创建出同等大小的菲波那切数列 下标的数组
         var mid = 0 // 中间的值
         var k = 0
         // 找到 表示当前数组的个数的下标
@@ -235,12 +235,7 @@ object SearchSort {
 
 
             } else {
-                if (mid <= high) {
-                    return mid
-                }else{
-                    return high
-                }
-
+                return mid
             }
         }
         return -1
